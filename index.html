@@ -176,6 +176,7 @@ let draftLabels = {...DEF_LABELS};
 let gcalToken   = null;
 let tokenClient = null;
 let pendingFn   = null;
+let hidePast    = true;
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
 const getDOW    = (m,d) => new Date(2026,m,d).getDay();
@@ -363,6 +364,7 @@ function htmlHeader() {
       </div>
       ${gcalBtn}
       <button class="btn-sm btn-categories" data-a="open-cats">Edit Categories</button>
+      <button class="btn-sm ${hidePast ? 'btn-gcal-on' : 'btn-categories'}" data-a="toggle-past">${hidePast ? 'Showing Current+' : 'Show Full Year'}</button>
       <button class="btn-sm btn-signout" data-a="signout">Sign Out</button>
     </div>
   </div>`;
@@ -370,8 +372,10 @@ function htmlHeader() {
 
 function htmlGrid() {
   const today = new Date();
+  const currentMonth = today.getFullYear() === 2026 ? today.getMonth() : (today.getFullYear() < 2026 ? 0 : 11);
   let rows = '';
   MONTHS.forEach((month, mi) => {
+    if (hidePast && mi < currentMonth) return;
     let cells = '';
     for (let d = 1; d <= 31; d++) {
       const valid    = d <= DIM[mi];
@@ -583,6 +587,7 @@ document.getElementById('app').addEventListener('click', async e => {
     await signOut(auth);
     return;
   }
+  if (a === 'toggle-past') { hidePast = !hidePast; renderHeader(); renderGrid(); return; }
   if (a === 'gcal') { connectGCal(); return; }
 
   if (a === 'open-cats') {
