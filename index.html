@@ -56,8 +56,8 @@ textarea { resize: vertical; }
 .cal-table colgroup col:first-child { width:46px; }
 .th-month { padding:3px 6px; text-align:left; color:var(--text3); font-size:9px; font-weight:700; letter-spacing:0.1em; position:sticky; left:0; background:var(--bg); border-right:1px solid var(--border); z-index:3; }
 .th-day { text-align:center; padding:3px 1px; color:var(--text3); font-size:9px; font-weight:700; }
-.td-month { padding:1px 6px; color:var(--blue); font-size:clamp(8px,1.3vw,11px); font-weight:800; letter-spacing:0.14em; text-transform:uppercase; position:sticky; left:0; background:var(--bg); z-index:2; border-right:1px solid var(--border); white-space:nowrap; vertical-align:top; padding-top:4px; }
-.td-day { height:calc((100vh - 110px) / 12); min-height:40px; border:0.5px solid var(--border); background:#fff; vertical-align:top; padding:2px 3px; position:relative; transition:background 0.1s; overflow:hidden; }
+.td-month { padding:1px 6px; color:var(--blue); font-size:clamp(8px,1.3vw,11px); font-weight:800; letter-spacing:0.14em; text-transform:uppercase; position:sticky; left:0; background:var(--bg); z-index:2; border-right:1px solid var(--border); white-space:nowrap; vertical-align:middle; text-align:center; }
+.td-day { height:calc((100vh - 110px) / 12); min-height:40px; border:0.5px solid var(--border); background:#fff; vertical-align:top; padding:2px 3px; position:relative; transition:background 0.1s; overflow:hidden; max-width:0; }
 .td-day.valid { cursor:pointer; }
 .td-day.invalid { background:#eef0f5; }
 .td-day.is-weekend { background:#edf0f7; }
