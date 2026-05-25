@@ -391,8 +391,8 @@ function htmlGrid() {
       const attr = valid ? `data-a="day" data-m="${mi}" data-d="${d}"` : '';
       let inner = '';
       if (valid && evList.length > 0) {
-        const pills = evList.slice(0,3).map(ev => `<span class="ev-pill" style="background:${ci(ev.color).bg}">${esc(ev.text)}</span>`).join('');
-        const more = evList.length > 3 ? `<div class="ev-overflow">+${evList.length-3}</div>` : '';
+        const pills = evList.slice(0,5).map(ev => `<span class="ev-pill" style="background:${ci(ev.color).bg}">${esc(ev.text)}</span>`).join('');
+        const more = evList.length > 5 ? `<div class="ev-overflow">+${evList.length-5}</div>` : '';
         inner = pills + more;
       } else if (valid && isToday && evList.length===0) {
         inner = `<div class="today-ring"></div>`;
